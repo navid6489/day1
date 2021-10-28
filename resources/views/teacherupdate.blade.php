@@ -7,7 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -72,12 +74,33 @@ span.psw {
   
 }
 .row{
-    margin-top: 15px;
-}
-</style>
+    margin-top: 15px;</style>
 </head>
 <body>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">DAY1 TASK</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          @if(Session::get('id')=='1')
+          <a href="/adminhome">Home</a>
+          @elseif(Session::get('id')=='2')
+          <a href="/studenthome">Home</a>
+          @elseif(Session::get('id')=='3')
+          <a href="/teacherhome">Home</a>
+          @endif
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a  href="<?php echo url('/')?>"><span class="glyphicon glyphicon-log-in"></span>Logout</a>
+         
+        </li>
+      </ul>
+    </div>
+  </nav>
     <h2>Teacher Update Form</h2>
 
     <form id="loginform"  method="post" enctype="multipart/form-data">

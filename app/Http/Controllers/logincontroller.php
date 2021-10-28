@@ -8,7 +8,7 @@ use App\Models\teachers;
 use Illuminate\Http\Request;
 use File;
 use DB;
-
+use Session;
 class logincontroller extends Controller
 {
     /**
@@ -18,17 +18,28 @@ class logincontroller extends Controller
      */
     public function adminhome()
     {
+        
         $teacherrequests =  DB::select("SELECT * from teachers where approveflag=0");
         $studentrequests =  DB::select("SELECT * from students where approveflag=0");
         return view('adminhome')->with(compact('teacherrequests','studentrequests'));
+        
+        
     }
     public function studenthome()
     {
-        return view('studenthome');
+        
+            return view('studenthome');
+      
+       
     }
     public function teacherhome()
     {
-        return view('teacherhome');
+        
+            return view('teacherhome');
+        
+        
+        
+       
     }
     public function logincheck(Request $request)
     {
@@ -42,7 +53,7 @@ class logincontroller extends Controller
             $admin = admin::all();
             foreach($admin as $key => $admin2){
                 
-                if($username==$admin2->name && $password==$admin2->password &&$admin2->approveflag==1 )
+                if($username==$admin2->name && $password==$admin2->password )
             {
                 $foundflag=1;
                 break;
@@ -51,6 +62,11 @@ class logincontroller extends Controller
               
             }
             if($foundflag==1){
+               
+               //Session::set('id', '1');
+               // session(['id' => '1']);
+                Session::put('id', '1');
+                Session::save();
                 $returnData = array('status' => 'success');
              return json_encode($returnData);
             }
@@ -74,6 +90,9 @@ class logincontroller extends Controller
               
             }
             if($foundflag==1){
+               // session(['id' => '3']);
+                Session::put('id', '3');
+                Session::save();
                 $returnData = array('status' => 'success');
              return json_encode($returnData);
             }
@@ -99,6 +118,9 @@ class logincontroller extends Controller
             }
             //dd($foundflag);
             if($foundflag==1){
+                Session::put('id', '2');
+                Session::save();
+                //session(['id' => '2']);
                 $returnData = array('status' => 'success');
              return json_encode($returnData);
             }

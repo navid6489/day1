@@ -15,6 +15,9 @@ use App\Http\Controllers\logincontroller;
 */
 
 Route::get('/', function () {
+    return view('first');
+});
+Route::get('/adminlogin', function () {
     return view('login');
 });
 Route::get('/adminhome',[logincontroller::class,'adminhome']);

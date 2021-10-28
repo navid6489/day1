@@ -7,7 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -77,7 +79,30 @@ span.psw {
 </style>
 </head>
 <body>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">DAY1 TASK</a>
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+         <ul class="dropdown-menu">
+            <li><a href="/studentsignup"><span class="glyphicon glyphicon-user"></span>student signup</a></li>
+            <li><a href="/teachersignup"><span class="glyphicon glyphicon-user"></span>teacher signup</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-toggle" data-toggle="dropdown"  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+         <ul class="dropdown-menu">
+          <li><a href="/adminlogin"><span class="glyphicon glyphicon-log-in"></span>admin login</a></li>
+            <li><a href="/studentlogin"><span class="glyphicon glyphicon-log-in"></span>student login</a></li>
+            <li><a href="/teacherlogin"><span class="glyphicon glyphicon-log-in"></span>teacher login</a></li>
+             
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 <h2>Student SignUp Form</h2>
 
 <form id="loginform"  method="post" enctype="multipart/form-data">
